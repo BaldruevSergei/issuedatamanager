@@ -1,0 +1,6 @@
+<h1>Rendered Template</h1>
+<ul>
+    #foreach ($entity in $entities)
+        <li>$entity.name - $entity.description</li>
+    #end
+</ul>

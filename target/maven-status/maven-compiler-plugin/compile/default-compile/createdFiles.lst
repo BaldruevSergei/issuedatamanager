@@ -1,0 +1,15 @@
+com\example\plugins\issuedatamanager\ActiveObjectsInitializer.class
+com\example\plugins\api\MyPluginComponent.class
+com\example\plugins\impl\MyPluginComponentImpl.class
+com\example\plugins\issuedatamanager\MyEntityVelocityContextProvider.class
+com\example\plugins\config\MyPluginJavaConfig.class
+com\example\plugins\ao\Media.class
+com\example\plugins\ao\BorrowingTransaction.class
+com\example\plugins\issuedatamanager\Library.class
+com\example\plugins\ao\Copy.class
+com\example\plugins\ao\Book.class
+com\example\plugins\issuedatamanager\MyEntityService.class
+com\example\plugins\ao\MyEntity.class
+com\example\plugins\ao\Member.class
+com\example\plugins\ao\DVD.class
+com\example\plugins\issuedatamanager\LibraryService.class

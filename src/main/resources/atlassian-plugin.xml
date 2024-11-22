@@ -1,0 +1,36 @@
+<atlassian-plugin key="${atlassian.plugin.key}" name="${project.name}" plugins-version="2">
+    <plugin-info>
+        <description>${project.description}</description>
+        <version>${project.version}</version>
+        <vendor name="${project.organization.name}" url="${project.organization.url}" />
+        <param name="plugin-icon">images/pluginIcon.png</param>
+        <param name="plugin-logo">images/pluginLogo.png</param>
+    </plugin-info>
+
+    <!-- Add i18n resource -->
+    <resource type="i18n" name="i18n" location="issue-data-manager"/>
+
+    <!-- Add web resources -->
+    <web-resource key="issue-data-manager-resources" name="issue-data-manager Web Resources">
+        <dependency>com.atlassian.auiplugin:ajs</dependency>
+
+        <resource type="download" name="issue-data-manager.css" location="/css/issue-data-manager.css"/>
+        <resource type="download" name="issue-data-manager.js" location="/js/issue-data-manager.js"/>
+        <resource type="download" name="images/" location="/images"/>
+
+        <context>atl.general</context>
+    </web-resource>
+
+    <!-- Register context provider -->
+    <context-provider key="my-entity-context-provider" class="com.example.plugins.issuedatamanager.MyEntityVelocityContextProvider">
+        <description>Provides MyEntityService to Velocity templates</description>
+    </context-provider>
+
+    <!-- Register Issue Tab Panel -->
+    <web-panel key="my-entity-tab-panel" location="atl.jira.view.issue.tabs" weight="100">
+        <resource type="velocity" name="view" location="/templates/my-entity-tab.vm"/>
+        <context-provider key="my-entity-context-provider"/>
+    </web-panel>
+    <component-import key="templateRenderer" interface="com.atlassian.templaterenderer.TemplateRenderer"/>
+
+</atlassian-plugin>

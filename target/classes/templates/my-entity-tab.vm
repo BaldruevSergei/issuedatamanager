@@ -1,0 +1,7 @@
+<h3>My Entities</h3>
+<select id="entity-dropdown">
+    #foreach ($entity in $myEntityService.getAll())
+        <option value="$entity.value">$entity.name</option>
+    #end
+</select>
+javac -version

@@ -1,0 +1,55 @@
+@startuml
+class Library {
+    - books: List<Book>
+    - members: List<Member>
+    - transactions: List<BorrowingTransaction>
+    + addBook(book: Book): void
+    + registerMember(member: Member): void
+    + findBookByISBN(isbn: String): Book
+}
+
+abstract class Media {
+    - id: int
+    - title: String
+    - author: String
+    - publicationDate: Date
+    + getMediaType(): String
+}
+
+class Book extends Media {
+    - isbn: String
+    - genres: List<String>
+    + addGenre(genre: String): void
+    + isAvailable(): boolean
+}
+
+class Member {
+    - memberId: String
+    - name: String
+    - contactInfo: String
+    + borrowBook(book: Book): void
+    + returnBook(book: Book): void
+}
+
+class BorrowingTransaction {
+    - transactionId: String
+    - borrowDate: Date
+    - dueDate: Date
+    - returned: boolean
+    - member: Member
+    - book: Book
+    + markAsReturned(): void
+}
+
+class ReminderService {
+    + sendReminder(transaction: BorrowingTransaction): void
+    + checkOverdueTransactions(): List<BorrowingTransaction>
+}
+
+Library "1" o-- "*" Book
+Library "1" o-- "*" Member
+Library "1" o-- "*" BorrowingTransaction
+Member "1" --> "*" BorrowingTransaction
+Book "1" --> "1" BorrowingTransaction
+ReminderService --> BorrowingTransaction
+@enduml
