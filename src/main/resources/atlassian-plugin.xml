@@ -7,30 +7,51 @@
         <param name="plugin-logo">images/pluginLogo.png</param>
     </plugin-info>
 
-    <!-- Add i18n resource -->
+    <!-- ActiveObjects Entities -->
+    <ao key="library-ao" name="Active Objects Module">
+        <description>Active Objects for Library</description>
+        <entity>com.example.plugins.ao.Book</entity>
+        <entity>com.example.plugins.ao.Copy</entity>
+        <entity>com.example.plugins.ao.Member</entity>
+        <entity>com.example.plugins.ao.BorrowingTransaction</entity>
+    </ao>
+
+    <!-- Add Book Form Servlet -->
+    <servlet name="Add Book Form Servlet" key="add-book-form-servlet" class="com.example.plugins.controller.AddBookFormServlet">
+        <description>Servlet for rendering the add book form</description>
+        <url-pattern>/addBookForm</url-pattern>
+    </servlet>
+
+    <!-- Add Book Processing Servlet -->
+    <servlet name="Add Book Servlet" key="add-book-servlet" class="com.example.plugins.controller.AddBookServlet">
+        <description>Servlet for processing the add book form</description>
+        <url-pattern>/addBook</url-pattern>
+    </servlet>
+
+    <!-- Component Imports -->
+    <component-import key="activeObjects" interface="com.atlassian.activeobjects.external.ActiveObjects" />
+    <component-import key="templateRenderer" interface="com.atlassian.templaterenderer.TemplateRenderer" />
+
+    <!-- i18n Resources -->
     <resource type="i18n" name="i18n" location="issue-data-manager"/>
 
-    <!-- Add web resources -->
+    <!-- Web Resources -->
     <web-resource key="issue-data-manager-resources" name="issue-data-manager Web Resources">
         <dependency>com.atlassian.auiplugin:ajs</dependency>
-
         <resource type="download" name="issue-data-manager.css" location="/css/issue-data-manager.css"/>
         <resource type="download" name="issue-data-manager.js" location="/js/issue-data-manager.js"/>
         <resource type="download" name="images/" location="/images"/>
-
         <context>atl.general</context>
     </web-resource>
 
-    <!-- Register context provider -->
+    <!-- Velocity Context Provider -->
     <context-provider key="my-entity-context-provider" class="com.example.plugins.issuedatamanager.MyEntityVelocityContextProvider">
         <description>Provides MyEntityService to Velocity templates</description>
     </context-provider>
 
-    <!-- Register Issue Tab Panel -->
+    <!-- Issue Tab Panel -->
     <web-panel key="my-entity-tab-panel" location="atl.jira.view.issue.tabs" weight="100">
         <resource type="velocity" name="view" location="/templates/my-entity-tab.vm"/>
         <context-provider key="my-entity-context-provider"/>
     </web-panel>
-    <component-import key="templateRenderer" interface="com.atlassian.templaterenderer.TemplateRenderer"/>
-
 </atlassian-plugin>

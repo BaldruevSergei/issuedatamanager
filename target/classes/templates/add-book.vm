@@ -1,0 +1,24 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Добавить книгу</title>
+</head>
+<body>
+<h1>Добавить книгу</h1>
+<form action="/addBook" method="post">
+    <label for="isbn">ISBN:</label>
+    <input type="text" id="isbn" name="isbn" required>
+
+    <label for="title">Название:</label>
+    <input type="text" id="title" name="title" required>
+
+    <label for="author">Автор:</label>
+    <input type="text" id="author" name="author" required>
+
+    <label for="genres">Жанры:</label>
+    <input type="text" id="genres" name="genres">
+
+    <button type="submit">Добавить книгу</button>
+</form>
+</body>
+</html>

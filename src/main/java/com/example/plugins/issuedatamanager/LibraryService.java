@@ -1,18 +1,24 @@
 package com.example.plugins.issuedatamanager;
 
+import com.atlassian.activeobjects.external.ActiveObjects;
 import com.example.plugins.ao.Book;
 import com.example.plugins.ao.Copy;
 import com.example.plugins.ao.Member;
 import com.example.plugins.ao.BorrowingTransaction;
 
-import java.util.ArrayList;
+import javax.inject.Inject;
+import java.util.Arrays;
 import java.util.Date;
 import java.util.List;
+import java.util.stream.Collectors;
 
 public class LibraryService {
-    private List<Book> books = new ArrayList<>();
-    private List<Copy> copies = new ArrayList<>();
-    private List<BorrowingTransaction> transactions = new ArrayList<>();
+    private final ActiveObjects ao;
+
+    @Inject
+    public LibraryService(ActiveObjects ao) {
+        this.ao = ao; // Инжектируем ActiveObjects
+    }
 
     public BorrowingTransaction borrowBook(Member member, Copy copy) {
         if (!copy.isAvailable()) {
@@ -20,16 +26,17 @@ public class LibraryService {
             return null;
         }
 
-        BorrowingTransaction transaction = new BorrowingTransaction();
+        BorrowingTransaction transaction = ao.create(BorrowingTransaction.class);
         transaction.setTransactionId(generateTransactionId());
         transaction.setMember(member);
         transaction.setCopy(copy);
         transaction.setBorrowDate(new Date());
         transaction.setDueDate(calculateDueDate(14)); // Срок возврата — 14 дней
         transaction.setReturned(false);
+        transaction.save();
 
-        transactions.add(transaction);
         copy.setAvailable(false); // Сделать экземпляр недоступным
+        copy.save();
 
         return transaction;
     }
@@ -37,28 +44,29 @@ public class LibraryService {
     public void returnBook(BorrowingTransaction transaction) {
         transaction.markAsReturned();
         transaction.getCopy().setAvailable(true);
+        transaction.save();
     }
 
     public void addBook(String isbn, String title, String author, Date publicationDate, List<String> genres) {
-        Book book = new Book();
+        Book book = ao.create(Book.class); // Создание записи в Active Objects
         book.setIsbn(isbn);
         book.setTitle(title);
         book.setAuthor(author);
         book.setPublicationDate(publicationDate);
-        book.setGenres(genres);
+        book.setGenres(genres.toArray(new String[0])); // Сохранение списка жанров
+        book.save();
 
-        books.add(book); // Добавить книгу в коллекцию
-        System.out.println("Книга добавлена: " + title);
+        System.out.println("Книга добавлена в базу данных: " + title);
     }
 
     public void addCopy(Book book, String copyId) {
-        Copy copy = new Copy();
+        Copy copy = ao.create(Copy.class); // Создание экземпляра через Active Objects
         copy.setCopyId(copyId);
         copy.setBook(book);
         copy.setAvailable(true);
+        copy.save();
 
-        copies.add(copy); // Добавить экземпляр в коллекцию
-        System.out.println("Экземпляр добавлен: " + copyId + " для книги " + book.getTitle());
+        System.out.println("Экземпляр добавлен в базу данных: " + copyId + " для книги " + book.getTitle());
     }
 
     private String generateTransactionId() {
@@ -73,15 +81,13 @@ public class LibraryService {
 
     public List<BorrowingTransaction> getOverdueTransactions() {
         Date now = new Date();
-        List<BorrowingTransaction> overdueTransactions = new ArrayList<>();
-        for (BorrowingTransaction transaction : transactions) {
-            if (!transaction.isReturned() && transaction.getDueDate().before(now)) {
-                overdueTransactions.add(transaction);
-            }
-        }
-        return overdueTransactions;
+        BorrowingTransaction[] allTransactions = ao.find(BorrowingTransaction.class);
+        return Arrays.stream(allTransactions)
+                .filter(transaction -> !transaction.isReturned() && transaction.getDueDate().before(now))
+                .collect(Collectors.toList());
     }
+
     public List<Book> getBooks() {
-        return books;
+        return Arrays.asList(ao.find(Book.class)); // Получение всех записей книг из базы данных
     }
 }
