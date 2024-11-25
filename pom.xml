@@ -52,15 +52,6 @@
             <artifactId>gson</artifactId>
             <version>2.9.1</version>
         </dependency>
-
-        <!-- Active Objects -->
-        <dependency>
-            <groupId>com.atlassian.activeobjects</groupId>
-            <artifactId>activeobjects-plugin</artifactId>
-            <version>5.0.0</version>
-            <scope>provided</scope>
-        </dependency>
-
         <!-- Spring -->
         <dependency>
             <groupId>org.springframework</groupId>
@@ -129,7 +120,56 @@
             <version>4.13.2</version>
             <scope>test</scope>
         </dependency>
+        <dependency>
+            <groupId>javax.ws.rs</groupId>
+            <artifactId>javax.ws.rs-api</artifactId>
+            <version>2.1</version>
+        </dependency>
 
+        <dependency>
+            <groupId>jakarta.ws.rs</groupId>
+            <artifactId>jakarta.ws.rs-api</artifactId>
+            <version>2.1.6</version>
+            <scope>provided</scope>
+        </dependency>
+        <dependency>
+            <groupId>org.mockito</groupId>
+            <artifactId>mockito-core</artifactId>
+            <version>4.11.0</version>
+            <scope>test</scope>
+        </dependency>
+
+        <dependency>
+            <groupId>junit</groupId>
+            <artifactId>junit</artifactId>
+            <version>4.13.2</version>
+            <scope>test</scope>
+        </dependency>
+            <!-- ActiveObjects API -->
+        <!-- https://mvnrepository.com/artifact/com.atlassian.activeobjects/activeobjects-plugin -->
+        <dependency>
+            <groupId>com.atlassian.activeobjects</groupId>
+            <artifactId>activeobjects-plugin</artifactId>
+            <version>6.0.0-m03</version>
+            <scope>provided</scope>
+        </dependency>
+
+        <!-- https://mvnrepository.com/artifact/com.atlassian.activeobjects/activeobjects-parent-pom -->
+        <dependency>
+            <groupId>com.atlassian.activeobjects</groupId>
+            <artifactId>activeobjects-parent-pom</artifactId>
+            <version>0.7.2</version>
+            <type>pom</type>
+        </dependency>
+
+
+        <!-- ActiveObjects Test (для модульных тестов) -->
+            <dependency>
+                <groupId>com.atlassian.activeobjects</groupId>
+                <artifactId>activeobjects-test</artifactId>
+                <version>6.0.0-m03</version>
+                <scope>test</scope>
+            </dependency>
     </dependencies>
 
     <build>

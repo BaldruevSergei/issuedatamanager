@@ -6,6 +6,13 @@
         <param name="plugin-icon">images/pluginIcon.png</param>
         <param name="plugin-logo">images/pluginLogo.png</param>
     </plugin-info>
+    <ao key="library-ao" name="Active Objects Module">
+        <description>Active Objects for Library</description>
+        <entity>com.example.plugins.ao.Book</entity>
+        <entity>com.example.plugins.ao.Copy</entity>
+        <entity>com.example.plugins.ao.Member</entity>
+        <entity>com.example.plugins.ao.BorrowingTransaction</entity>
+    </ao>
 
     <!-- Add i18n resource -->
     <resource type="i18n" name="i18n" location="issue-data-manager"/>
