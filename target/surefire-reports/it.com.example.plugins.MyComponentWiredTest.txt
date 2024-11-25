@@ -1,0 +1,10 @@
+-------------------------------------------------------------------------------
+Test set: it.com.example.plugins.MyComponentWiredTest
+-------------------------------------------------------------------------------
+Tests run: 1, Failures: 0, Errors: 1, Skipped: 0, Time elapsed: 0.045 s <<< FAILURE! -- in it.com.example.plugins.MyComponentWiredTest
+it.com.example.plugins.MyComponentWiredTest -- Time elapsed: 0.045 s <<< ERROR!
+java.lang.IllegalStateException: Missing base URL 'null'; is the 'baseurl' system property set?
+	at com.atlassian.plugins.osgi.test.AtlassianPluginsTestRunner.getResourceUrl(AtlassianPluginsTestRunner.java:41)
+	at com.atlassian.plugins.osgi.test.AtlassianPluginsTestRunner.runViaRestCall(AtlassianPluginsTestRunner.java:95)
+	at com.atlassian.plugins.osgi.test.AtlassianPluginsTestRunner.run(AtlassianPluginsTestRunner.java:77)
+

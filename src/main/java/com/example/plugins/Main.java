@@ -1,8 +1,7 @@
 package com.example.plugins;
 import com.example.plugins.issuedatamanager.LibraryService;
-import net.java.ao.ActiveObjects;
+import com.atlassian.activeobjects.external.ActiveObjects;
 import org.mockito.Mockito;
-
 import java.util.Arrays;
 import java.util.Date;
 

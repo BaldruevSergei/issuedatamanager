@@ -1,4 +1,5 @@
 C:\Project\Test_plagin\issue-data-manager\src\main\java\com\example\plugins\ao\Book.java
+C:\Project\Test_plagin\issue-data-manager\src\main\java\com\example\plugins\ao\BookDTO.java
 C:\Project\Test_plagin\issue-data-manager\src\main\java\com\example\plugins\ao\BorrowingTransaction.java
 C:\Project\Test_plagin\issue-data-manager\src\main\java\com\example\plugins\ao\Copy.java
 C:\Project\Test_plagin\issue-data-manager\src\main\java\com\example\plugins\ao\DVD.java
@@ -12,6 +13,7 @@ C:\Project\Test_plagin\issue-data-manager\src\main\java\com\example\plugins\impl
 C:\Project\Test_plagin\issue-data-manager\src\main\java\com\example\plugins\issuedatamanager\ActiveObjectsInitializer.java
 C:\Project\Test_plagin\issue-data-manager\src\main\java\com\example\plugins\issuedatamanager\Library.java
 C:\Project\Test_plagin\issue-data-manager\src\main\java\com\example\plugins\issuedatamanager\LibraryService.java
+C:\Project\Test_plagin\issue-data-manager\src\main\java\com\example\plugins\issuedatamanager\LibraryServiceTest.java
 C:\Project\Test_plagin\issue-data-manager\src\main\java\com\example\plugins\issuedatamanager\LibraryVelocityContextProvider.java
 C:\Project\Test_plagin\issue-data-manager\src\main\java\com\example\plugins\issuedatamanager\MyEntityService.java
 C:\Project\Test_plagin\issue-data-manager\src\main\java\com\example\plugins\issuedatamanager\MyEntityVelocityContextProvider.java
