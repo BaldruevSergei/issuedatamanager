@@ -1,4 +1,5 @@
 package com.example.plugins.issuedatamanager;
+
 import com.example.plugins.ao.Book;
 import com.example.plugins.ao.Copy;
 import com.example.plugins.ao.Member;
@@ -9,6 +10,8 @@ import java.util.Date;
 import java.util.List;
 
 public class LibraryService {
+    private List<Book> books = new ArrayList<>();
+    private List<Copy> copies = new ArrayList<>();
     private List<BorrowingTransaction> transactions = new ArrayList<>();
 
     public BorrowingTransaction borrowBook(Member member, Copy copy) {
@@ -36,6 +39,28 @@ public class LibraryService {
         transaction.getCopy().setAvailable(true);
     }
 
+    public void addBook(String isbn, String title, String author, Date publicationDate, List<String> genres) {
+        Book book = new Book();
+        book.setIsbn(isbn);
+        book.setTitle(title);
+        book.setAuthor(author);
+        book.setPublicationDate(publicationDate);
+        book.setGenres(genres);
+
+        books.add(book); // Добавить книгу в коллекцию
+        System.out.println("Книга добавлена: " + title);
+    }
+
+    public void addCopy(Book book, String copyId) {
+        Copy copy = new Copy();
+        copy.setCopyId(copyId);
+        copy.setBook(book);
+        copy.setAvailable(true);
+
+        copies.add(copy); // Добавить экземпляр в коллекцию
+        System.out.println("Экземпляр добавлен: " + copyId + " для книги " + book.getTitle());
+    }
+
     private String generateTransactionId() {
         return "TX-" + System.currentTimeMillis();
     }
@@ -55,5 +80,8 @@ public class LibraryService {
             }
         }
         return overdueTransactions;
+    }
+    public List<Book> getBooks() {
+        return books;
     }
 }
