@@ -22,15 +22,26 @@ public class AddBookController extends HttpServlet {
         String title = req.getParameter("title");
         String author = req.getParameter("author");
 
-        activeObjects.executeInTransaction((TransactionCallback<Void>) () -> {
-            Book book = activeObjects.create(Book.class);
-            book.setIsbn(isbn);
-            book.setTitle(title);
-            book.setAuthor(author);
-            book.save();
-            return null;
-        });
+        try {
+            activeObjects.executeInTransaction((TransactionCallback<Void>) () -> {
+                Book book = activeObjects.create(Book.class);
+                book.setIsbn(isbn);
+                book.setTitle(title);
+                book.setAuthor(author);
+                book.save();
+                return null;
+            });
 
-        resp.sendRedirect("/books");
+            // Успешный ответ
+            resp.setContentType("application/json");
+            resp.setCharacterEncoding("UTF-8");
+            resp.getWriter().write("{\"status\":\"success\", \"message\":\"Книга добавлена успешно!\"}");
+        } catch (Exception e) {
+            // Ошибка при добавлении
+            resp.setStatus(HttpServletResponse.SC_INTERNAL_SERVER_ERROR);
+            resp.setContentType("application/json");
+            resp.setCharacterEncoding("UTF-8");
+            resp.getWriter().write("{\"status\":\"error\", \"message\":\"Не удалось добавить книгу.\"}");
+        }
     }
 }
