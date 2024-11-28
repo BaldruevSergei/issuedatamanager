@@ -2,8 +2,7 @@
 <html>
 <head>
     <title>Добавить книгу</title>
-    <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
-    <script src="static/js/addBook.js"></script> <!-- Подключение  скрипта -->
+    #requireResourcesForContext("atl.general") <!-- Подключение ресурсов из Web Resource -->
 </head>
 <body>
 <h1>Добавить книгу</h1>

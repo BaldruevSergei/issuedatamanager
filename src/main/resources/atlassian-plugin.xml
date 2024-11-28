@@ -43,6 +43,12 @@
         <resource type="download" name="images/" location="/images"/>
         <context>atl.general</context>
     </web-resource>
+    <web-resource key="add-book-resources" name="Add Book Resources">
+        <resource type="download" name="addBook.js" location="/js/addBook.js"/>
+        <resource type="download" name="addBook.css" location="/css/addBook.css"/>
+        <context>atl.general</context>
+    </web-resource>
+
 
     <!-- Velocity Context Provider -->
     <context-provider key="my-entity-context-provider" class="com.example.plugins.issuedatamanager.MyEntityVelocityContextProvider">
