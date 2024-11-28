@@ -2,10 +2,12 @@
 <html>
 <head>
     <title>Добавить книгу</title>
+    <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+    <script src="static/js/addBook.js"></script> <!-- Подключение  скрипта -->
 </head>
 <body>
 <h1>Добавить книгу</h1>
-<form action="/addBook" method="post">
+<form id="addBookForm">
     <label for="isbn">ISBN:</label>
     <input type="text" id="isbn" name="isbn" required>
 
@@ -20,5 +22,7 @@
 
     <button type="submit">Добавить книгу</button>
 </form>
+
+<div id="responseMessage"></div>
 </body>
 </html>
