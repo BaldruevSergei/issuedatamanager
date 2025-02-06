@@ -9,3 +9,57 @@ Here are the SDK commands you'll use immediately:
 Full documentation is always available at:
 
 https://developer.atlassian.com/display/DOCS/Introduction+to+the+Atlassian+Plugin+SDK
+
+issuedatamanager
+
+Описание проекта
+issuedatamanager — это приложение для управления данными о выданных объектах. Оно позволяет добавлять, редактировать, удалять и просматривать данные о выдаче, а также отслеживать их состояние.
+
+Технологии
+Язык программирования: Java 17+
+Фреймворк: Spring Boot
+База данных: PostgreSQL
+Сборка и управление зависимостями: Gradle
+Документация API: Swagger/OpenAPI
+Контейнеризация: Docker
+
+Функциональность
+- Добавление данных о выданных объектах.
+- Редактирование и удаление данных.
+- Поиск и фильтрация данных.
+- Отслеживание статуса объектов.
+
+Инструкция по запуску
+
+Клонирование репозитория:
+git clone https://github.com/BaldruevSergei/issuedatamanager.git
+cd issuedatamanager
+
+Установка зависимостей:
+Убедитесь, что установлены Java 17+ и Gradle (или используйте Gradle Wrapper).
+
+Запуск приложения:
+./gradlew bootRun
+Для Windows:
+gradlew.bat bootRun
+
+Доступ к приложению:
+Приложение будет доступно по адресу:
+http://localhost:8080
+
+Swagger UI:
+http://localhost:8080/swagger-ui.html
+
+Стек технологий
+
+Backend (Java)
+- Язык программирования: Java 17+
+- Фреймворк: Spring Boot
+- База данных: PostgreSQL
+- Сборка: Gradle
+- API-документация: Swagger/OpenAPI
+- Контейнеризация: Docker
+
+Дополнительно
+- Формат данных: JSON
+- Логирование: встроенные механизмы Spring Boot
